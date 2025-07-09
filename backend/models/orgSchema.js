@@ -11,7 +11,7 @@ const orgSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true,
-    }
+    },
 
 });
 const OrgDetail = mongoose.model("OrgDetail", orgSchema);

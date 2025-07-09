@@ -59,19 +59,19 @@
 }
 
 .event-card {
-  background: rgba(255, 255, 255, 0.6);
-  border-radius: 20px;
-  padding: 0;
-  box-shadow:
-    6px 6px 12px rgba(0, 0, 0, 0.08),
-    -6px -6px 12px rgba(255, 255, 255, 0.7);
-  backdrop-filter: saturate(180%) blur(15px);
-  transition: transform 0.35s ease, box-shadow 0.35s ease, background-color 0.35s ease;
-  border: 1px solid rgba(0, 150, 136, 0.2);
-  cursor: pointer;
-  opacity: 0;
-  animation: fadeInUp 0.7s ease forwards;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  width: 300px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+  align-self: flex-start; /* This is the key! Allows card to grow independently */
 }
+
 
 .event-card:hover {
   transform: translateY(-10px) scale(1.04);
@@ -199,6 +199,89 @@
 .show-more-btn:active {
   transform: translateY(0);
 }
+
+/* ---- New Event Card Styles ---- */
+.new-events {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: flex-start; /* Make sure row doesn't align stretch */
+}
+
+
+.event-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  width: 300px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.event-card:hover {
+  transform: translateY(-5px);
+}
+
+.event-banner {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.event-info {
+  padding: 15px;
+}
+
+.event-info h3 {
+  margin: 0 0 10px;
+  font-size: 18px;
+}
+
+.event-info p {
+  margin: 5px 0;
+  color: #555;
+}
+
+.event-info button {
+  margin-right: 10px;
+  padding: 6px 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.event-info button:last-child {
+  background-color: #28a745;
+}
+
+.event-details {
+  padding: 15px;
+  background-color: #f5f5f5;
+  border-top: 1px solid #e0e0e0;
+  font-size: 14px;
+  color: #333;
+  flex-grow: 1;
+}
+
+.event-details p {
+  margin: 6px 0;
+  line-height: 1.4;
+}
+
+
+.show-more-btn {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: #1890ff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
 
 /* Animations */
 @keyframes fadeInUp {

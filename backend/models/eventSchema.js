@@ -11,6 +11,13 @@ const eventSchema = new mongoose.Schema({
     date: String,
     time: String,
     location: String,
+    eventBanner: {
+        type: String,
+
+    },
+    description:{
+        type: String,
+    }
     
 },{timestamps: true});
 

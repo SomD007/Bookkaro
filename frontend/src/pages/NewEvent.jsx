@@ -28,6 +28,8 @@ const EventForm = () => {
     date: '',
     time: '',
     location: '',
+    eventBanner:'',
+    description:'',
   });
 
     const navigate = useNavigate();// to navigate to /org page
@@ -204,6 +206,28 @@ const EventForm = () => {
             type="text"
             name="location"
             value={formData.location}
+            onChange={handleChange}
+            required
+          />
+        </label>
+
+        <label>
+          Event Banner
+          <input
+            type="text"
+            name="eventBanner"
+            value={formData.eventBanner}
+            onChange={handleChange}
+            required
+          />
+        </label>
+
+                <label>
+          Description
+          <input
+            type="text"
+            name="description"
+            value={formData.description}
             onChange={handleChange}
             required
           />

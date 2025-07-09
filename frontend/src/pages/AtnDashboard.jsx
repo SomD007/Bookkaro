@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './AtnDashboard.css';
-import { useNavigate } from 'react-router-dom'; 
+import { useNavigate } from 'react-router-dom';
 
 const AtnDashboard = () => {
   const [greeting, setGreeting] = useState('');
@@ -9,8 +9,9 @@ const AtnDashboard = () => {
   const [userEmail, setUserEmail] = useState('');
   const [events, setEvents] = useState([]);
   const [showAllEvents, setShowAllEvents] = useState(false);
+  const [expandedEventId, setExpandedEventId] = useState(null);
 
-  const navigate = useNavigate(); // initialize navigation
+  const navigate = useNavigate();
 
   useEffect(() => {
     const hour = new Date().getHours();
@@ -41,7 +42,7 @@ const AtnDashboard = () => {
       })
       .catch(err => {
         console.error('Error fetching user info:', err);
-        navigate('/login'); //auto-redirect to login if not logged in
+        navigate('/login');
       });
   }, [navigate]);
 
@@ -56,11 +57,15 @@ const AtnDashboard = () => {
         setUserName('');
         setUserEmail('');
         setEvents([]);
-        navigate('/login'); // Redirect to login after logout
+        navigate('/login');
       })
       .catch(err => {
         console.error('Logout error:', err);
       });
+  };
+
+  const toggleEventDetails = (id) => {
+    setExpandedEventId(prevId => (prevId === id ? null : id));
   };
 
   const displayedEvents = showAllEvents ? events : events.slice(0, 4);
@@ -69,24 +74,42 @@ const AtnDashboard = () => {
     <div className="atn-dashboard">
       <h1 className="dashboard-title">{greeting}, <span>{userName || 'Attendee'}!</span></h1>
 
-      <button onClick={handleLogout} className="logout-btn" style={{ marginBottom: '20px' }}>Logout</button>
+      <button onClick={handleLogout} className="logout-btn">Logout</button>
 
       <div className="section">
         <h2 className="section-title">✨ New Events to Register</h2>
         <div className="new-events">
           {displayedEvents.map(event => (
             <div key={event._id || event.id} className="event-card new">
-              {event.imgLink && <img src={event.imgLink} alt={event.eventName} />}
+              {event.eventBanner && (
+                <img src={event.eventBanner} alt={event.eventName} className="event-banner" />
+              )}
               <div className="event-info">
                 <h3>{event.eventName}</h3>
-                <p>{new Date(event.date).toLocaleDateString()}</p>
+                <p>🎟 Tickets Left: <strong>Coming Soon</strong></p>
+                <button onClick={() => toggleEventDetails(event._id || event.id)}>
+                  {expandedEventId === (event._id || event.id) ? 'Hide Details' : 'View Details'}
+                </button>
                 <button onClick={() => handleRegister(event._id || event.id)}>Register</button>
               </div>
+
+              {expandedEventId === (event._id || event.id) && (
+                <div className="event-details">
+                  <p><strong>Description:</strong> {event.description || 'No description provided.'}</p>
+                  <p><strong>Date:</strong> {new Date(event.date).toLocaleString()}</p>
+                  <p><strong>Location:</strong> {event.location || 'To be announced'}</p>
+                  {event.organizer && <p><strong>Organizer:</strong> {event.organizer}</p>}
+                  {event.category && <p><strong>Category:</strong> {event.category}</p>}
+                  {/* Add more fields here if needed */}
+                </div>
+              )}
+
             </div>
           ))}
         </div>
+
         {events.length > 4 && (
-          <button className="show-more-btn" onClick={() => setShowAllEvents(!showAllEvents)} style={{ marginTop: '10px' }}>
+          <button className="show-more-btn" onClick={() => setShowAllEvents(!showAllEvents)}>
             {showAllEvents ? 'Show Less' : 'Show More'}
           </button>
         )}
