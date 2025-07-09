@@ -1,0 +1,119 @@
+/* Page background */
+.event-form-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 20px;
+  background-image: url('https://images.unsplash.com/photo-1522158637959-30385a09e0da?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); /* Or url('https://example.com/image.png') */
+    background-repeat: no-repeat; /* 👈 ensures image doesn't repeat */
+    background-size:cover;
+  animation: fadeIn 0.8s ease-in;
+}
+
+/* Form box with gradient */
+.event-form {
+  background: rgba(0, 0, 0, 0.5); /* semi-transparent black */
+  padding: 60px;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(235, 239, 255, 0.1);
+  width: 100%;
+  max-width: 500px;
+  animation: slideUp 0.6s ease-out;
+  transition: background 0.3s ease-in-out;
+}
+
+/* Heading */
+.event-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #8364d0;
+}
+
+.event-form h3{
+  color:#c4dbed;
+  width:60%;
+  height: 130%;
+}
+
+.event-form h3 span{
+  color:#6c97ba;
+}
+
+/* Labels and Inputs */
+.event-form label {
+  display: block;
+  margin-bottom: 16px;
+  font-weight: 500;
+  color: #d2e9fc;
+}
+
+.event-form input,
+.event-form select {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin-top: 6px;
+  font-size: 16px;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.event-form input:focus,
+.event-form select:focus {
+  border-color: #667eea;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.3);
+}
+
+/* Submit Button */
+.submit-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #667eea;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.submit-btn:hover {
+  background-color: #5a67d8;
+  transform: scale(1.02);
+}
+
+/* Animations */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .event-form {
+    padding: 20px;
+  }
+
+  .event-form h2 {
+    font-size: 20px;
+  }
+}

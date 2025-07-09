@@ -1,0 +1,243 @@
+/* src/pages/home.css */
+.homepage-container {
+  font-family: Arial, sans-serif;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+.hero {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 3rem;
+  background: #f5f5f5;
+}
+
+
+.hero-content {
+  flex: 1;
+  min-width: 300px;
+  padding: 2rem;
+  animation: fadeInUp 0.6s ease-in-out;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 2rem;
+  max-width: 500px;
+}
+
+.cta-button {
+  background: linear-gradient(135deg, #007bff, #00c6ff);
+  color: white;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+  background: linear-gradient(135deg, #0056b3, #008cdd);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0, 123, 255, 0.4);
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-content {
+  flex: 1;
+  min-width: 300px;
+}
+.hero-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color:#007bff;
+}
+
+.hero-content h1 span{
+  
+  background: linear-gradient(90deg, rgb(241, 53, 241), #00c6ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.cta-button {
+  background: #007bff;
+  color: white;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.hero-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+.features {
+  text-align: center;
+  padding: 3rem 1rem;
+}
+.feature-cards {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.card {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  width: 250px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+.card img {
+  margin-bottom: 1rem;
+}
+
+
+/* Gallery Part of the Webpage */
+
+
+.gallery {
+  padding: 4rem 1rem;
+  background: #fafafa;
+  text-align: center;
+}
+
+/* === Modern Branded Gallery Heading === */
+.gallery h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  background: linear-gradient(90deg, rgb(197, 6, 197), #00c6ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 2.5rem;
+  letter-spacing: 0.5px;
+  animation: fadeInSlideUp 0.8s ease-out;
+  position: relative;
+}
+
+/* Optional underline accent to match gradient theme */
+.gallery h2::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #007bff, #00c6ff);
+  margin: 0.75rem auto 0;
+  border-radius: 2px;
+}
+
+/* Entry animation */
+@keyframes fadeInSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+
+
+
+.gallery-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+
+/* Hover effect */
+.gallery-grid img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
+}
+
+
+
+
+
+/* Gallery Part Ends */
+
+
+
+.testimonials {
+  background: #007bff;
+  color: white;
+  padding: 3rem 1rem;
+}
+.testimonials-list {
+  display: grid;
+  gap: 2rem;
+  max-width: 800px;
+  margin: auto;
+}
+.testimonials blockquote {
+  background: rgba(255,255,255,0.1);
+  padding: 1.5rem;
+  border-radius: 8px;
+}
+.testimonials footer {
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+.footer {
+  text-align: center;
+  padding: 2rem 1rem;
+  background: #f0f0f0;
+}
+.footer-links a {
+  margin: 0 0.5rem;
+  color: #007bff;
+  text-decoration: none;
+}
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+

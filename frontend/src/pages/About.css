@@ -1,0 +1,181 @@
+/* About.css */
+
+/* Main container */
+.about-container {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 2rem;
+  background: linear-gradient(to right, #f9f9f9, #e0f7fa);
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Header */
+.about-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.about-header h1 {
+  font-size: 2.8rem;
+  color: #00796b;
+}
+
+.about-header p {
+  font-size: 1.2rem;
+  color: #555;
+}
+
+/* Description Section */
+.about-description {
+  max-width: 800px;
+  margin: auto;
+  padding: 1rem;
+  text-align: center;
+}
+
+/* --- Who Are We Section Enhancements --- */
+.about-description h2 {
+  font-size: 2rem;
+  color: #004d40;
+  margin-bottom: 1rem;
+}
+
+.about-description h2::after {
+  content: '';
+  display: block;
+  margin: 0.5rem auto;
+  width: 60px;
+  height: 3px;
+  background-color: #00796b;
+  border-radius: 2px;
+}
+
+.about-description p {
+  font-size: 1.05rem;
+  color: #333;
+  background-color: #ffffffbb;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.about-description p:hover {
+  background-color: #f1fefb;
+  transform: translateY(-3px);
+}
+
+
+/* Founders Section */
+.about-founders {
+  margin: 3rem 0;
+  text-align: center;
+}
+
+.founders-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.founder-card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  padding: 1rem;
+  width: 150px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.founder-card:hover {
+  transform: translateY(-5px);
+}
+
+.founder-avatar {
+  background-color: #4db6ac;
+  color: white;
+  font-size: 2rem;
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 0.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Enhanced Why Choose Section - Darker Theme */
+.about-interactive {
+  text-align: center;
+  padding: 3rem 1rem;
+  background: linear-gradient(135deg, #cfd8dc, #eceff1);
+  border-radius: 12px;
+  max-width: 1100px;
+  margin: 0 auto 4rem auto;
+}
+
+.about-interactive h2 {
+  font-size: 2rem;
+  color: #00695c;
+  margin-bottom: 2rem;
+}
+
+/* Grid of Features */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+/* Individual Feature Card */
+.feature-card {
+  background: #fefefe;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 105, 92, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 20px rgba(0, 105, 92, 0.2);
+}
+
+.feature-icon {
+  font-size: 2.5rem;
+  display: block;
+  margin-bottom: 0.8rem;
+  color: #00695c;
+}
+
+.feature-card h3 {
+  font-size: 1.2rem;
+  color: #003d33;
+  margin-bottom: 0.5rem;
+}
+
+.feature-card p {
+  color: #444;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* Call-to-Action Button */
+.explore-button {
+  background-color: #00695c;
+  color: white;
+  border: none;
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.explore-button:hover {
+  background-color: #00251a;
+}
