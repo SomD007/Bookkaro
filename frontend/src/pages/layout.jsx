@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Homepage from './home.jsx';
 import About from './About.jsx';
 import Services from './Services.jsx';
+import Gallery from './Gallery.jsx';
 import Footer from './Footer.jsx';
 import AdminDashboard from './AdminDashboard.jsx';
 import OrgDashboard from './OrgDashboard.jsx';
@@ -22,7 +23,8 @@ function Layout() {
           <ul className="menu-ul">
             <li className="menu-li"><Link to="/" className="home">Home</Link></li>
             <li className="menu-li"><Link to="/about" className="about">About</Link></li>
-            <li className="menu-li">Gallery</li>
+            <li className="menu-li"><Link to="/gallery" className="about">Gallery</Link></li>
+
             <li className="menu-li"><Link to="/services" className="about">Services</Link></li>
             <li className="menu-li"><Link to="/login" className="about">Login</Link></li>
           </ul>
@@ -32,6 +34,8 @@ function Layout() {
           <Route path="*" element={<Homepage />} />
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
+          <Route path="/gallery" element={<Gallery />} />
+
           <Route path="/login" element={<LoginSignup />} />
           <Route path="/admin" element={<AdminDashboard />} />
           <Route path="/org" element={<OrgDashboard />} />

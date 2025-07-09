@@ -102,6 +102,13 @@
   text-align: center;
   padding: 3rem 1rem;
 }
+.features h2 {
+  color: #e8c1f3; /* Change to any color you prefer */
+  text-align: center;
+  background-color: #0a0a0a;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
 .feature-cards {
   display: flex;
   gap: 2rem;
@@ -207,7 +214,7 @@
 
 
 .testimonials {
-  background: #007bff;
+  background: rgb(155, 49, 171);
   color: white;
   padding: 3rem 1rem;
 }
@@ -217,16 +224,22 @@
   max-width: 800px;
   margin: auto;
 }
+.testimonials h2 {
+  color: #060b0a; /* Black heading */
+  margin-bottom: 1.5rem;
+}
 .testimonials blockquote {
-  background: rgba(255,255,255,0.1);
+  background: rgba(19, 18, 18, 0.1);
   padding: 1.5rem;
   border-radius: 8px;
 }
 .testimonials footer {
   margin-top: 0.5rem;
   font-style: italic;
+  color: #333333; /* Slightly lighter black */
+  font-weight: bold;
 }
-.footer {
+/* .footer {
   text-align: center;
   padding: 2rem 1rem;
   background: #f0f0f0;
@@ -238,6 +251,6 @@
 }
 .footer-links a:hover {
   text-decoration: underline;
-}
+} */
 
 
