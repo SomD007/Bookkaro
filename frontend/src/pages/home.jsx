@@ -120,14 +120,14 @@ function Homepage() {
         </div>
       </section>
 
-      {/* Footer */}
+      {/* /* Footer
       <footer className="footer">
         <p>&copy; {new Date().getFullYear()} BOOKKARO. All rights reserved.</p>
         <div className="footer-links">
           <a href="/privacy">Privacy Policy</a>
           <a href="/terms">Terms of Service</a>
         </div>
-      </footer>
+      </footer> */} 
 
       
         
