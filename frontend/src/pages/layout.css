@@ -169,3 +169,80 @@ nav ul li:hover{
     padding-top:10px;
   }
 }
+/* service styling */
+
+/* 🌿 Wrapper for heading + subtext */
+.services-heading-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem 0;
+}
+
+/* 🌿 Heading with white bg and dark green text */
+.services-header {
+  background-color: #ffffff;
+  color: #006400; /* dark green */
+  padding: 0.5rem 1.2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 100, 0, 0.1);
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+/* 🌿 Subtext with light green tone */
+.services-subtext {
+  background-color: #ffffff;
+  color: #228B22; /* light green */
+  padding: 0.4rem 1rem;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
+/* 🌿 Grid layout for service cards */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  padding: 0 1.5rem;
+  margin-bottom: 3rem;
+}
+
+/* 🌿 Individual service card */
+.service-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* 🌿 Card hover animation */
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* 🌿 Emoji or icon at top of card */
+.service-icon {
+  font-size: 2.2rem;
+  margin-bottom: 0.8rem;
+}
+
+/* 🌿 Card title */
+.service-title {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #006400;
+}
+
+/* 🌿 Card description */
+.service-desc {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.5;
+}
