@@ -1,0 +1,79 @@
+/* AdminDashboard.css */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css');
+
+.admin-container {
+  min-height: calc(100vh - 120px); /* adjust for header/footer */
+  background: linear-gradient(145deg, #f0f0f5, #ffffff);
+  display: flex;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.sidebar {
+  background: #caa8be;
+  color: #0c2805;
+  width: 200px;
+  min-height: 100%;
+  padding: 20px;
+  border-top-right-radius: 20px;
+  box-shadow: 2px 0 8px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 60px;
+}
+.sidebar button {
+  color: #101011 !important;
+}
+
+
+
+
+.main-content {
+  flex: 1;
+  padding: 40px 30px;
+}
+
+.admin-profile {
+  text-align: center;
+  background: #fff;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  margin-bottom: 30px;
+  transform: scale(1);
+  transition: all 0.3s ease-in-out;
+}
+.admin-profile:hover {
+  transform: scale(1.02);
+}
+
+.admin-profile img {
+  border-radius: 50%;
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  margin-bottom: 15px;
+  border: 3px solid #caa8be;
+}
+
+.section {
+  background: #fff;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  margin-bottom: 30px;
+}
+
+.section-title {
+  font-weight: 600;
+  color: #363e46;
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+}
+
+.custom-bar {
+  transition: all 0.3s ease;
+}
+
+.custom-bar:hover {
+  filter: drop-shadow(0 4px 10px rgba(29, 132, 29, 0.6)); /* pastel green glow */
+  transform: scaleY(1.04);
+}

@@ -23,8 +23,6 @@ app.use(express.json());
 
 // 🔗 Connect to MongoDB
 mongoose.connect('mongodb://127.0.0.1:27017/bookkaro', {
-  //useNewUrlParser: true,
-  //useUnifiedTopology: true
 })
 .then(() => console.log("✅ MongoDB connected"))
 .catch(err => console.error("❌ MongoDB connection error:", err));
@@ -39,7 +37,7 @@ app.use(session({
     collectionName: 'sessions'
   }),
   cookie: {
-    maxAge: 1000 * 60 * 60 * 24,  // expires in 1 day
+    maxAge: 1000 * 60 * 60 * 24,
     httpOnly: true,
     secure: false
   }
@@ -51,6 +49,12 @@ function getRoleFromUsername(username) {
   if (username.endsWith('@org')) return 'organiser';
   if (username.endsWith('@atn')) return 'attendee';
   return null;
+}
+
+// 🛡️ Middleware to allow only admin access
+function requireAdmin(req, res, next) {
+  if (req.session.username?.endsWith('@adm')) return next();
+  return res.status(403).json({ error: 'Unauthorized admin access' });
 }
 
 //  Signup endpoint
@@ -79,7 +83,7 @@ app.post('/api/signup', async (req, res) => {
 //  Login endpoint with scessions
 app.post('/api/login', async (req, res) => {
   const { email, password } = req.body;
-  console.log("Test Value: ",email); //
+  console.log("Test Value: ",email);
 
   const role = getRoleFromUsername(email);
   if (!role) return res.status(400).json({ error: 'Invalid email format.' });
@@ -91,7 +95,6 @@ app.post('/api/login', async (req, res) => {
     const user = await Model.findOne({ username: email, password });
     if (!user) return res.status(401).json({ error: 'Invalid credentials' });
 
-    //  Save username in session
     req.session.username = user.username;
     req.session.name = user.name;
     console.log(`🧾 ${role} logged in:`, user.username);
@@ -110,17 +113,14 @@ app.post('/api/login', async (req, res) => {
   }
 });
 
-
 //  Get current username and name from session
 app.get("/api/get-current-user", (req, res) => {
   if (req.session.username && req.session.name) {
-    // Send back the username and name
     res.json({ username: req.session.username, name: req.session.name });
   } else {
     res.status(401).json({ error: "User not logged in" });
   }
 });
-
 
 //  Send messages
 app.post('/api/send-name', (req, res) => {
@@ -134,32 +134,24 @@ app.get("/api/message", (req, res) => {
   res.json({ message: "Hello From Express!" });
 });
 
-
-
 //To Receive event data
 app.post('/api/create-event', async (req, res) => {
-
-    try{
-        const eventData = req.body;
-        const newEvent = new Event(eventData);
-        await newEvent.save();
-
-        console.log("🎉 New Event Received:", newEvent);
-        res.status(200).json({ message: "Event created successfully" });
-    }catch(err){
-        console.log("❌ Error saving event:", err);
-        res.status(500).json({error : "❌ Failed to save event"});
-    }
+  try{
+    const eventData = req.body;
+    const newEvent = new Event(eventData);
+    await newEvent.save();
+    console.log("🎉 New Event Received:", newEvent);
+    res.status(200).json({ message: "Event created successfully" });
+  }catch(err){
+    console.log("❌ Error saving event:", err);
+    res.status(500).json({error : "❌ Failed to save event"});
+  }
 });
-
-
 
 app.post("/events", async (req, res)=>{
   const {username} = req.body;
-
   try{
     const userEvents = await Event.find({createdBy: username});
-
     res.json(userEvents);
   }catch(error){
     console.error("Error fetching Events", error);
@@ -167,19 +159,10 @@ app.post("/events", async (req, res)=>{
   }
 });
 
-
-
-// GET /api/events - get all events with organiser info
+// GET /api/events - get all events
 app.get('/api/events', async (req, res) => {
   try {
-    // Optional populate organiser details
-    // `createdBy` in Event schema stores organiser username/email
-    const events = await Event.find({}).populate({
-      path: 'createdBy', //store organiser as ObjectId ref in Event schema
-      select: 'name username' // picking fields to send
-    });
-
-    // If `createdBy` is just a string (email), no populate needed, just send events
+    const events = await Event.find({});
     res.json(events);
   } catch (error) {
     console.error('Error fetching events:', error);
@@ -187,9 +170,39 @@ app.get('/api/events', async (req, res) => {
   }
 });
 
+// 🔐 Admin-only: Get all users
+app.get('/api/admin/users', requireAdmin, async (req, res) => {
+  try {
+    const organizers = await orgDetail.find({}, 'name username');
+    const attendees = await atnDetail.find({}, 'name username');
+    res.json({ organizers, attendees });
+  } catch (err) {
+    console.error("❌ Error fetching users:", err);
+    res.status(500).json({ error: 'Error fetching users' });
+  }
+});
 
+// 🔐 Admin-only: Get all events
+app.get('/api/admin/events', requireAdmin, async (req, res) => {
+  try {
+    const events = await Event.find({});
+    res.json(events);
+  } catch (err) {
+    console.error("❌ Error fetching events:", err);
+    res.status(500).json({ error: 'Error fetching events' });
+  }
+});
 
-
+// 🔐 Admin-only: Delete event
+app.delete('/api/admin/event/:id', requireAdmin, async (req, res) => {
+  try {
+    await Event.findByIdAndDelete(req.params.id);
+    res.json({ message: 'Event deleted successfully' });
+  } catch (err) {
+    console.error("❌ Error deleting event:", err);
+    res.status(500).json({ error: 'Failed to delete event' });
+  }
+});
 
 // logout route
 app.post('/api/logout', (req, res) => {
@@ -198,12 +211,10 @@ app.post('/api/logout', (req, res) => {
       console.error("❌ Error during logout:", err);
       return res.status(500).json({ error: "Logout failed" });
     }
-
     res.clearCookie('connect.sid');
     res.json({ message: 'Logged out' });
   });
 });
-
 
 //Starting the server
 app.listen(PORT, () => {
